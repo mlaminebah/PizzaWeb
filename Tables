@@ -1,0 +1,50 @@
+Pizza :
+    • id_pizza
+    • Nom
+    • Prix 
+    • Ingrédients (liste des ingrédients)
+    • Photo
+    • la taille de la pizza 
+Client :
+    • id_Client
+    • Photo
+	
+Personne:
+    • id_Personne
+    • Nom
+    • Prénom
+    • email
+    • Mot de passe
+    • N° Phone
+    • Adresse
+      
+Employés :
+    • id_employé
+    • Photo pièce d’identité
+Admin  : 
+    • id_admin
+
+Stock :
+    • pates (x morceaux)
+    • sauce tomate (x cartons dont 1 carton fait z nombre de pizza)
+    • sauce (barbecue,crème fraîche,sauce algérienne)
+    • olives
+    • tomâtes fraiches
+    • oignon
+    • poivron
+    • fromage de chèvre
+    • viande
+    • poulet
+    • poisson (saumon,thon)
+
+Commandes  :
+    • id_Commande
+    • id_Personne
+    • Date
+    • id_pizza
+    • Quantité 
+    • total commande
+
+      
+      
+	  

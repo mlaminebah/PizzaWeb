@@ -1,0 +1,65 @@
+L’écran d’accueil 
+	C’est le premier écran qui s’affiche lorsqu’on lance l’application. 
+	Il contient : 
+    • Une liste de pizza avec des informations telles que la photo,le nom de la pizza,la taille ainsi que le prix qui lorsqu’on clique  sur l’une des pizza nous conduit vers la page d’authentification.
+    • Un bouton de redirection vers la page d’authentification.
+    • Un bouton de redirection vers la page de création d’un compte pour les visiteurs ne possédant pas encore un compte.
+
+L’écran d’authentification 
+	Cet écran contient principalement un champs login et mot de passe permettant à l’utilisateur 	de s’authentifier et en fonctions de ses droits accède à des fonctionnalités de l’application.
+	Il contient également un lien vers la page de création d’un compte
+
+L’écran de création d’un compte
+	Cet écran collecte les informations personnelles du client.
+
+L’écran d’affichage d’un profil client
+	Cet écran contient :
+    • les informations du client
+    • un lien de redirection vers la modification du profil
+    • un bouton lui permettant de supprimer son compte
+    • une liste des produits qu’il peut rajouter à son panier
+    • un onglet de redirection vers son panier
+    • un lien permettant de consulter l’historique de ses commandes passées.
+	
+L’écran de modification d’un profil
+	Cet écran pourrait ressembler à l’écran de création d’un compte.
+	Cet écran permet à l’utilisateur de modifier ses informations personnelles.
+
+L’écran d’affichage du panier
+	Cet écran contient :
+    • la liste des produits ajoutés au panier par le client.
+    • un bouton de suppression du produit devant le produit.
+    • un bouton de validation de la commande.
+	
+L’écran d’ajout d’un produit au stock côté  admin
+	Cet écran permet de collecter les informations d’une pizza
+	
+L’écran de modification d’un produit (pizza)
+	Cet écran permet de modifier les informations d’une pizza.
+
+L’écran d’affichage de la liste de tous les produits côté admin
+	Cet écran contient : 
+    • tous les produits en stocks  avec leurs informations
+    • un bouton modifier devant chaque produit
+    • un bouton supprimer devant chaque produit
+    • un onglet de recherche d’un produit
+    • une redirection vers l’historique des commandes passés par tous les clients
+
+L’écran de la consultation de la liste des clients  côté administrateur
+	Cet écran contient :
+    • les infos des clients
+    • une redirection vers l’historique des commandes du client
+    • un bouton de suppression du client.
+    • un bouton de modification du client.
+
+L’écran d’affichage de l’historique des commandes
+	Cet écran contient 
+    • une liste ordonnée de toutes les commandes passées par chaque client
+    • un onglet de recherche d’une ou des commande.s particulière.s  (par date,par numéro de commande, par nom du client.
+
+Plus loin
+	Faire une analyse de données des commandes par mois, par jour,…….
+
+	
+
+
