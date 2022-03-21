@@ -1,0 +1,9 @@
+INDEX VERSION 1.131
+/home/minesabry/Bureau/2021-2022/M1-MIAGE/s8/PizzaWeb/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/4204950947.index
+/pizzaWeb/src/main/java
+/home/minesabry/Bureau/2021-2022/M1-MIAGE/s8/PizzaWeb/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/1927093902.index
+/pizzaweb/src/main/java
+/home/minesabry/Bureau/2021-2022/M1-MIAGE/s8/PizzaWeb/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3693478839.index
+/pizzaweb/src/main/java
+/home/minesabry/Bureau/2021-2022/M1-MIAGE/s8/PizzaWeb/.metadata/.plugins/org.eclipse.jst.jsp.core/jspsearch/3459532836.index
+/pizzaWeb/src/main/java

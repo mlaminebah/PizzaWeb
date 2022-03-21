@@ -1,0 +1,29 @@
+.produits {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap:25px;
+    margin-top: 15px;
+}
+
+.product {
+    max-width: 90%;
+    padding: 0 4px;
+    height: 190px;
+    border: 0px solid rgb(243, 207, 207);
+}
+.product img {
+    margin-top: 8px;
+    margin-left: 15%;
+    width: 70%;
+    height: 70%;
+}
+.product .prix {
+    font-size: 20px;
+}
+.product table {
+    margin-left: 40px;
+}
+.product .icone_add {
+    margin-left: 50px;
+    margin-top: -2px;
+}

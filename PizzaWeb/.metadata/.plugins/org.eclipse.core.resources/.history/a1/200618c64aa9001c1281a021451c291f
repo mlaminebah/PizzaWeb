@@ -1,0 +1,20 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>Insert title here</title>
+		<link rel="stylesheet" href="css/login.css" type="text/css">
+	</head>
+	<body>
+		<section class="login">
+	        <img src="images/user.png" alt="profil" id="profilelog">
+	        <h1 class="conn">Connexion</h1>
+	        <input type="text" placeholder="adresse email" class="incon">
+	        <input type="password" placeholder="mot de passe" class="incon">
+	        <button class="btncon">se connecter</button>
+	        <p>Vous n'avez pas de compte? <a href="sign_up.html">s'inscrire</a> </p> 
+	    </section>
+	</body>
+</html>

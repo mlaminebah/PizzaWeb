@@ -1,0 +1,3 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<session version="1.0">&#x0A;<refactoring comment="Move &apos;Index.jsp&apos; to &apos;WEB-INF&apos;" description="Move &apos;Index.jsp&apos; to &apos;WEB-INF&apos;" destination="src/main/webapp/WEB-INF" element1="src/main/webapp/Index.jsp" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1647855519976" updateReferences="true"/>&#x0A;<refactoring comment="Move &apos;web.xml&apos; to &apos;lib&apos;" description="Move &apos;web.xml&apos; to &apos;lib&apos;" destination="src/main/webapp/WEB-INF/lib" element1="src/main/webapp/WEB-INF/web.xml" flags="7" id="org.eclipse.ltk.core.refactoring.move.resources" resources="1" stamp="1647855527078" updateReferences="true"/>
+</session>

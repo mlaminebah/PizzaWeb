@@ -1,13 +1,11 @@
-body{
-    background: rgb(198, 240, 13);
-}
-#container{
+
+.connexion{
     width:400px;
     margin:0 auto;
     margin-top:10%;
 }
 /* Bordered form */
-form {
+.formcon {
     left: center;
     width:100%;
     padding: 30px;
@@ -15,13 +13,13 @@ form {
     background: #fff;
     box-shadow: 0 0 20px 0 rgba(0, 0, 0, 0.2), 0 5px 5px 0 rgba(0, 0, 0, 0.24);
 }
-#container h1{
+.formcon h1{
     position: relative;
     width: 100%;
     margin: auto;
     padding-bottom: 10px;
 }
-#noAccount{
+.noAccount{
     color: solid #ccc;
     width: 100%;
     margin: auto;
@@ -29,7 +27,7 @@ form {
 }
 
 /* Full-width inputs */
-input[type=email], input[type=password] {
+.mp,.log {
     width: 100%;
     padding: 12px 20px;
     margin: 8px 0;
@@ -39,7 +37,7 @@ input[type=email], input[type=password] {
 }
 
 /* Set a style for all buttons */
-input[type=submit] {
+.valid {
     background-color: rgb(198, 240, 13);
     color: white;
     padding: 14px 20px;
@@ -50,7 +48,7 @@ input[type=submit] {
     width: 50%;
     border: 1px solid rgb(255, 255, 255);
 }
-input[type=submit]:hover {
+valid:hover {
     background-color: white;
     color: rgb(200, 235, 47);
     border: 1px solid rgb(175, 197, 76);
