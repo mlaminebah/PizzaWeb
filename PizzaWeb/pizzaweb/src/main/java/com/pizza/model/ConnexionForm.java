@@ -21,17 +21,21 @@ public class ConnexionForm {
 		String email = request.getParameter("email");
 		String mp = request.getParameter("password");
 		
-		//TDO: Il faudra donc remplacer ses instructions suivants par les bonnes (avec les informations de la base de données des utilisateurs
-		//vérifier si login est dans la base de données à l'aide d'une requête SQL
-		//récupérer le mot de passe du login trouvé dans la BD
-		
-		//TDO: vérifier si login existe déjà dans la db si tel n'est pas le cas assigné renvoyer la valeur false et assigné à resultat le message approprié
-		
-		String mpBd = "12345";
+		//TDO:
+		//1-se connecter à la base de données mysql
+		//2-véfrifier que le login existe 
+		//3-si oui verifier que le mot de pass est le bon
+		//4-si le mot de passe fournit diffère de celui enregistré renvoyé 
+		String mpBd = "12345";//à changer par le mot de récupérer dans la base
 		if (!mp.equals(mpBd)) {
 			resultat = new String ("Email ou mot de pass incorrect");
 			return false;
 		}
+		//5-si l'identifiant n'existe dans la base de donées pas alors 
+		/****
+		 * resultat = new String ("Compte inexistant")
+		 * return false;
+		 */
 		return true;
 	}
 
