@@ -42,11 +42,11 @@ public class InscriptionForm {
 			resultat = new String ("les 2 mots sont différents");
 			return false;
 		}
-		//TDO : si toutes les connditions sont respectées : insérer donct les données dans la base de données 
-		//Prendre en compte si l'utilisateur existe renvoyé une erreur en renvoyant false et un message result = new String (.....)
-		/*****
-		 * insertion des données dans la BD
-		 */
+		//TDO :
+		//1- se connecter à la base de données mysql
+		//2- vérifier si le login existe déjà dans la base de données
+		//3- si l'utilisateur n'est pas client l'insérer dans la base de données
+		//4- sinon renvoyé false et donné à la variable resultat le message : "login déjà utilisé"
 		return true;
 	}
 	
