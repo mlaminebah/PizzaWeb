@@ -7,6 +7,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import com.pizza.model.ConnexionForm;
+
 /**
  * Servlet implementation class Seconnecter
  */
@@ -33,8 +35,17 @@ public class Seconnecter extends HttpServlet {
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		//on fait appel à notre classe qui vérifie l'authentification
+		ConnexionForm conForm = new ConnexionForm();
+		//si la fonction renvoie false ou retourne vers la page de connection (échec authentification)
+		if (!conForm.verifierIdentifiantsCon(request)) {
+			request.setAttribute("conForm", conForm);
+			this.getServletContext().getRequestDispatcher("/seconnecter.jsp").forward(request, response);//renvoie d'une reponse d'erreur à la vue
+		} else {
+			//on rededirige vers la page lui permettant de commander 
+			this.getServletContext().getRequestDispatcher("/commander.jsp").forward(request, response);
+		}
+		
 	}
 
 }
