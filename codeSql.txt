@@ -1,0 +1,145 @@
+create DATABASE pizza_web;
+
+CREATE TABLE Personne (
+      IDPersonne INT NOT NULL,
+      Nom VARCHAR(100) NOT NULL,
+      Prenom VARCHAR(100) NOT NULL,
+      Email VARCHAR(100) NOT NULL,
+      Adresse VARCHAR(100),
+      PRIMARY KEY (IDPersonne),
+      UNIQUE (Email)
+);
+create table Administrateur (
+    IDAdministrateur int not null,
+    MotDePasse varchar(100) not null,
+    IDPersonne int,
+    primary key (IDAdministrateur),
+    foreign key (IDPersonne) REFERENCES Personne(IDPersonne)
+);
+
+CREATE TABLE Employe (
+                         IDEmploye INT  NOT NULL,
+                         PieceDidentite VARCHAR(100) ,
+                         IDPersonne INT,
+                         PRIMARY KEY (IDEmploye),
+                         FOREIGN KEY ( IDPersonne) REFERENCES Personne( IDPersonne)
+);
+
+CREATE TABLE Livreur (
+                         IDLivreur INT  NOT NULL,
+                         IDEmploye INT,
+                         PRIMARY KEY (IDLivreur),
+                         FOREIGN KEY ( IDEmploye) REFERENCES Employe( IDEmploye)
+);
+
+CREATE TABLE Cuisinier (
+                         IDCuisinier INT  NOT NULL,
+                         IDEmploye INT,
+                         PRIMARY KEY (IDCuisinier),
+                         FOREIGN KEY ( IDEmploye) REFERENCES Employe( IDEmploye)
+);
+
+CREATE TABLE Client (
+                           IDClient INT NOT NULL,
+                           MotDePasse varchar(50) not null,
+                           Photo varchar(100),
+                           IDPersonne INT,
+                           PRIMARY KEY (IDClient),
+                           FOREIGN KEY (IDPersonne) REFERENCES Personne(IDPersonne)
+);
+
+create  table Pizza (
+    IDPizza int,
+    Nom varchar(100),
+    Prix float,
+    Photo varchar(100),
+    Taille varchar(100),
+    primary key (IDPizza)
+);
+
+CREATE TABLE CuisinierAsso (
+                        IDPizza INT,
+                        IDEmploye INT,
+                        FOREIGN KEY (IDPizza) REFERENCES Pizza(IDPizza),
+                        FOREIGN KEY (IDEmploye) REFERENCES Employe(IDEmploye)
+);
+
+create table  Commande (
+    IDCommande int,
+    DateCommande datetime,
+    IDEmploye int,
+    IDClient int,
+    primary key  (IDCommande),
+    FOREIGN KEY (IDEmploye) REFERENCES Employe(IDEmploye),
+    FOREIGN KEY (IDClient) REFERENCES Client(IDClient)
+);
+
+create table  LigneCommande (
+    IDLigneCommande int,
+    Quantite int,
+    IDPizza int,
+    IDCommande int,
+    primary key (IDLigneCommande),
+    FOREIGN KEY (IDPizza) REFERENCES Pizza(IDPizza),
+    FOREIGN KEY (IDCommande) REFERENCES Commande(IDCommande)
+);
+
+create table Reglement (
+    IDReglement int not null,
+    DateReglement datetime not null ,
+    Montant float not null ,
+    EtatReglement boolean default false not null ,
+    IDClient int,
+    primary key (IDReglement),
+    FOREIGN KEY (IDClient) REFERENCES Client(IDClient)
+);
+
+create table Concerner (
+                           IDFacture int not null,
+                           IDReglement int,
+                           primary key (IDFacture),
+                           FOREIGN KEY (IDReglement) REFERENCES Reglement(IDReglement)
+);
+
+create table Facture (
+                           IDFacture int not null,
+                           DateFacture datetime not null,
+                           primary key (IDFacture)
+);
+
+create table Appartenir (
+                            IDCommande INT not null ,
+                            IDFacture INT not null ,
+                            FOREIGN KEY (IDCommande) REFERENCES Commande(IDCommande),
+                            FOREIGN KEY (IDFacture) REFERENCES Facture(IDFacture)
+);
+
+create table Stock (
+    IDStock int not null,
+    QuantiteStockee int not null ,
+    NomIngredient varchar(100),
+    primary key (IDStock)
+);
+
+
+create table  Ingredient (
+                                IDIngredient int not null ,
+                                Nom varchar(100) not null ,
+                                Prix float not null ,
+                                IDStock int,
+                                primary key (IDIngredient),
+                                FOREIGN KEY (IDStock) REFERENCES Stock(IDStock)
+);
+
+create table Composer (
+                            IDPizza INT not null ,
+                            IDIngredient INT not null ,
+                            FOREIGN KEY (IDPizza) REFERENCES Pizza(IDPizza),
+                            FOREIGN KEY (IDIngredient) REFERENCES Ingredient(IDIngredient)
+);
+
+
+
+
+
+
