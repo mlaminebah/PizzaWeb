@@ -1,6 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -21,6 +21,8 @@
 			         <a><img class="logo" id="logo" src="images/logo.jpg"/></a>
 			    </nav>
 			    <nav class="header-right">
-			         <img class="profile" id="profile" src="images/user.png"/>
+			    	 
+			         <a href="#"><img class="profile" id="profile" src="images/user.png"/></a>
+			         <span class="nom"><c:if test="${!empty sessionScope.prenom}"><c:out value="${sessionScope.prenom}"></c:out></c:if></span>
 			    </nav>
 		</header>

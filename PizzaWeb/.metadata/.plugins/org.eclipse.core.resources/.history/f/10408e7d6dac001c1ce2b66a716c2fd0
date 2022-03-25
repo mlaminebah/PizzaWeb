@@ -1,0 +1,84 @@
+package com.pizza.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.servlet.http.HttpServletRequest;
+
+/**
+ * 
+ * @author minesabry
+ *
+ *Cette classe vérifie les données envoyées par le client pour établir une connexion et en fonction de cela un message d'erreur 
+ *est édité ou pas
+ */
+public class ConnexionForm {
+	private String resultat;
+	//1-se connecter à la base de données mysql
+	private Connection connexion;
+	
+	
+
+	/***
+	 * 
+	 * @param request
+	 * @return true si les identifiants sont bons ce qui nous permettra de savoir s'il faut se rédiriger vers la page du client 
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 */
+	public boolean verifierIdentifiantsCon (HttpServletRequest request) throws ClassNotFoundException, SQLException {
+		
+		//on crée une variable de session pour pouvoir garder la connexion de l'utilisateur active tout aut long de la session tant que le navigateur n'est pas fermée
+		String mail = request.getParameter("email");
+		String mp = request.getParameter("password");
+		int id;
+		String nom;
+		String prenom;
+		String email;
+		String adresse;
+		String phone;
+		
+		Sessions sessions = new Sessions (request,mail,mp);
+		
+		
+		//TDO:
+		//1 : appel de la fonction qui charger la base de données
+		ChargerDatatBase();
+		boolean mailTrouve = false;
+		int i = 0;
+		String requete = "SELECT * FROM Personne P JOIN Client C ON (P.IDPersonne = C.IDClient) WHERE P.Email = ? AND C.MotDePasse = ?;";
+		PreparedStatement statement = connexion.prepareStatement(requete);
+		statement.setString(1,mail);
+		statement.setString(2,mp);
+		ResultSet resultset = statement.executeQuery();
+		while (resultset.next())
+			i ++;
+		
+		if (i != 1) {
+			resultat  = new String ("Email ou mot de passe incorrect");
+			return false;
+		}
+		id = resultset.getInt("IDPersonne");
+		nom = resultset.getString("Nom");
+		prenom = resultset.getString("Prenom");
+		adresse = resultset.getString ("Adresse");
+		//phone = resultset.getString ("Phone");
+		System.out.println("---"+i);
+		//new Sessions(request, nom, prenom,phone,adresse);
+		return true;
+	}
+
+	public String getResultat() {
+		return resultat;
+	}
+
+	public void setResultat(String resultat) {
+		this.resultat = resultat;
+	}
+	//Cette fonction fait appel à notre singleton qui charge la dataBase
+	private void ChargerDatatBase () throws ClassNotFoundException, SQLException {
+		connexion = ConnexionBDChargeDriver.getInstance().getConnexion();
+	}
+}

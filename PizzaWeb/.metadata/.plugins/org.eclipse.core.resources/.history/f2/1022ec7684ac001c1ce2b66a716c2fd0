@@ -1,0 +1,12 @@
+package com.pizza.model;
+
+public class Uils {
+	private String str;
+	
+	public Uils (String str) {
+		
+	}
+	public String getStr() {
+		return str;
+	}
+}

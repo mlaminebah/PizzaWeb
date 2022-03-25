@@ -1,0 +1,29 @@
+header {
+    display: grid;
+    grid-template-columns: 1fr 0.4fr;
+    overflow: hidden;
+    background-color:rgb(66, 64, 64);
+    height: 85px;
+    padding: 10px 15px 0px 10px;
+}
+.header-left .logo {
+    width: 70px;
+    height: 70px;
+    border : 1px solid red;
+    border-radius: 50px;
+    float: left;
+}
+.header-right .profile {
+    width: 40px;
+    height: 40px;
+    padding-top: 17px;
+    float: right;
+}
+.nom {
+	 color: red;
+	 
+	
+}
+.erreur {
+	color: red;
+}

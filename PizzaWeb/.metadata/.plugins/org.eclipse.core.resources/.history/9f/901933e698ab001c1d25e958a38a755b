@@ -1,0 +1,49 @@
+DROP TABLE Personne IF EXISTS;
+DROP TABLE Client IF EXISTS;
+DROP TABLE Administrateur IF EXISTS;
+DROP TABLE Pizza IF EXISTS;
+
+DROP DATABASE pizza_web IF EXISTS;
+
+CREATE DATABASE pizza_web;
+
+--Table Personne
+CREATE IF NOT EXISTS TABLE Personne (
+      IDPersonne INT NOT NULL,
+      Nom VARCHAR(100) NOT NULL,
+      Prenom VARCHAR(100) NOT NULL,
+      Email VARCHAR(100) NOT NULL,
+      Adresse VARCHAR(100),
+      PRIMARY KEY (IDPersonne),
+      UNIQUE (Email)
+);
+--Table Client
+CREATE IF NOT EXISTS TABLE Client (
+      IDClient INT NOT NULL,
+      MotDePasse varchar(50) not null,
+      Photo varchar(100),
+      IDPersonne INT,
+      PRIMARY KEY (IDClient),
+      FOREIGN KEY (IDPersonne) REFERENCES Personne(IDPersonne)
+);
+
+--Table Administrateur
+CREATE IF NOT EXISTS Administrateur (
+    IDAdministrateur int not null,
+    MotDePasse varchar(100) not null,
+    IDPersonne int,
+    primary key (IDAdministrateur),
+    foreign key (IDPersonne) REFERENCES Personne(IDPersonne)
+);
+
+--Table Pizza
+create IF NOT EXISTS table Pizza (
+    IDPizza int,
+    Nom varchar(100),
+    Prix float,
+    Photo varchar(100),
+    Taille varchar(100),
+    QteStock int,
+    primary key (IDPizza)
+);
+

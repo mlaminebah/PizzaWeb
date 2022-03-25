@@ -1,0 +1,88 @@
+package com.pizza.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
+import javax.servlet.http.HttpServletRequest;
+
+/**
+ * 
+ * @author minesabry
+ *
+ *Cette classe vérifie les données envoyées par le client pour établir une connexion et en fonction de cela un message d'erreur 
+ *est édité ou pas
+ */
+public class ConnexionForm {
+	private String resultat;
+	//1-se connecter à la base de données mysql
+	private Connection connexion;
+
+	/***
+	 * 
+	 * @param request
+	 * @return true si les identifiants sont bons ce qui nous permettra de savoir s'il faut se rédiriger vers la page du client 
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 */
+	public boolean verifierIdentifiantsCon (HttpServletRequest request) throws ClassNotFoundException, SQLException {
+		
+		//on crée une variable de session pour pouvoir garder la connexion de l'utilisateur active tout aut long de la session tant que le navigateur n'est pas fermée
+		String mail = request.getParameter("email");
+		String mp = request.getParameter("password");
+		
+		Sessions sessions = new Sessions (request,mail,mp);
+		
+		
+		//TDO:
+		//1 : appel de la fonction qui charger la base de données
+		ChargerDatatBase();
+		
+		 
+		PreparedStatement statement = connexion.prepareStatement("SELECT Nom,Email FROM Personne WHERE Email = ?");
+		statement.setString(2, mail);
+		ResultSet reponse = statement.executeQuery();
+		
+		
+		
+		/*int id = Integer.parseInt(reponse.getString ("IDPersonne"));
+		String nom = reponse.getString ("Nom");
+		String prenom = reponse.getString ("Prenom");
+		String email = reponse.getString ("Email");
+		String adresse = reponse.getString ("Adresse");*/
+		
+		//2-véfrifier que le login existe 
+		if (reponse.getFetchSize() != 1 && !mail.equals(email)) {
+			resultat = new String ("Login incorrect");
+			return false;
+		}
+		//3-si oui verifier que le mot de pass est le bon
+		
+		if (!mp.equals("12345")) {
+			resultat = new String ("Password incorrect");
+			return false;
+		}
+		
+		
+		//System.out.println(nom+" "+prenom+" "+email+" "+adresse);
+		//5-si l'identifiant n'existe dans la base de donées pas alors 
+		/****
+		 * resultat = new String ("Compte inexistant")
+		 * return false;
+		 */
+		return true;
+	}
+
+	public String getResultat() {
+		return resultat;
+	}
+
+	public void setResultat(String resultat) {
+		this.resultat = resultat;
+	}
+	//Cette fonction fait appel à notre singleton qui charge la dataBase
+	private void ChargerDatatBase () throws ClassNotFoundException, SQLException {
+		connexion = ConnexionBDChargeDriver.getInstance().getConnexion();
+	}
+}

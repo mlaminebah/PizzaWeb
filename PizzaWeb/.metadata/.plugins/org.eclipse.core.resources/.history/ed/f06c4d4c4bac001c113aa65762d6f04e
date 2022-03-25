@@ -1,0 +1,6 @@
+package com.pizza.model;
+
+public class ConnexionBDChargeDriver {
+	private static ConnexionBDChargeDriver instance = null;
+	
+}

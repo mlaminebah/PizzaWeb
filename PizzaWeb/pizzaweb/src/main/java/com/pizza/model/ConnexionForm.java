@@ -1,5 +1,11 @@
 package com.pizza.model;
 
+import java.security.NoSuchAlgorithmException;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+
 import javax.servlet.http.HttpServletRequest;
 
 /**
@@ -11,31 +17,59 @@ import javax.servlet.http.HttpServletRequest;
  */
 public class ConnexionForm {
 	private String resultat;
+	//1-se connecter à la base de données mysql
+	private Connection connexion;
+	
+	
 
 	/***
 	 * 
 	 * @param request
 	 * @return true si les identifiants sont bons ce qui nous permettra de savoir s'il faut se rédiriger vers la page du client 
+	 * @throws SQLException 
+	 * @throws ClassNotFoundException 
+	 * @throws NoSuchAlgorithmException 
 	 */
-	public boolean verifierIdentifiantsCon (HttpServletRequest request) {
-		String email = request.getParameter("email");
+	public boolean verifierIdentifiantsCon (HttpServletRequest request) throws ClassNotFoundException, SQLException, NoSuchAlgorithmException {
+		
+		//on crée une variable de session pour pouvoir garder la connexion de l'utilisateur active tout aut long de la session tant que le navigateur n'est pas fermée
+		String mail = request.getParameter("email");
 		String mp = request.getParameter("password");
 		
+		Client client = new Client ();
+		Sessions sessions = new Sessions (request,mail,mp);
+		
+		
 		//TDO:
-		//1-se connecter à la base de données mysql
-		//2-véfrifier que le login existe 
-		//3-si oui verifier que le mot de pass est le bon
-		//4-si le mot de passe fournit diffère de celui enregistré renvoyé 
-		String mpBd = "12345";//à changer par le mot de récupérer dans la base
-		if (!mp.equals(mpBd)) {
-			resultat = new String ("Email ou mot de pass incorrect");
+		//1 : appel de la fonction qui charger la base de données
+		ChargerDatatBase();
+		boolean mailTrouve = false;
+		
+		String requete = "SELECT * FROM Personne P JOIN Client C ON (P.IDPersonne = C.IDClient) WHERE P.Email = ? AND C.MotDePasse = ?;";
+		PreparedStatement statement = connexion.prepareStatement(requete);
+		Uils ut = new Uils(mp);
+		statement.setString(1,mail);
+		statement.setString(2,ut.getStr());
+		ResultSet resultset = statement.executeQuery();
+		
+		while (resultset.next() && mailTrouve != true) {
+			client.setId(resultset.getInt("IDPersonne"));
+			client.setNom(resultset.getString("Nom"));
+			client.setPrenom(resultset.getString("Prenom"));
+			client.setAdresse(resultset.getString ("Adresse"));
+			client.setPhone(resultset.getString ("Phone"));
+			client.setMotdePass(resultset.getString ("MotDePasse"));
+			if (mail.equals(resultset.getString("Email"))) mailTrouve = true;
+		}
+			
+		
+		if (mailTrouve != true) {
+			resultat  = new String ("Email ou mot de passe incorrect");
 			return false;
 		}
-		//5-si l'identifiant n'existe dans la base de donées pas alors 
-		/****
-		 * resultat = new String ("Compte inexistant")
-		 * return false;
-		 */
+		
+		System.out.println(client.getId()+" "+client.getNom()+" "+client.getPrenom()+" "+client.getAdresse()+" "+client.getPhone());
+		new Sessions(request, client.getNom(), client.getPrenom(),client.getAdresse(),client.getPhone());
 		return true;
 	}
 
@@ -46,5 +80,8 @@ public class ConnexionForm {
 	public void setResultat(String resultat) {
 		this.resultat = resultat;
 	}
-	
+	//Cette fonction fait appel à notre singleton qui charge la dataBase
+	private void ChargerDatatBase () throws ClassNotFoundException, SQLException {
+		connexion = ConnexionBDChargeDriver.getInstance().getConnexion();
+	}
 }
