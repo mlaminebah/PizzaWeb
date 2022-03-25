@@ -14,7 +14,7 @@ public class ConnexionBDChargeDriver {
 	
 	private ConnexionBDChargeDriver () throws ClassNotFoundException, SQLException {
 		Class.forName("com.mysql.cj.jdbc.Driver");
-		connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/pizza_web","root", "Fatoumata10");
+		connexion = DriverManager.getConnection("jdbc:mysql://localhost:3306/pizza_web","root", "votre mot de passe");//
 		System.out.println("Connexion établie avec succès");
 	}
 	public static ConnexionBDChargeDriver getInstance () throws ClassNotFoundException, SQLException {
