@@ -1,7 +1,10 @@
 INDEX VERSION 1.4+/home/minesabry/Bureau/2021-2022/M1-MIAGE/s8/PizzaWeb/.metadata/.plugins/org.eclipse.wst.jsdt.core/indexes
 2153781081.index
-1031396487.index
+3693478839.index
 3143686418.index
+1031396487.index
+1927093902.index
+3693478839.index
 2046191254.index
 1695245859.index
 3788819089.index

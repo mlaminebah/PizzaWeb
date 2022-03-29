@@ -1,0 +1,11 @@
+package com.pizza.servlets;
+
+import javax.servlet.http.HttpServletRequest;
+
+public class Panier {
+	
+	public Panier (HttpServletRequest request) {
+		System.out.println(request.getParameter("nom")+" "+request.getParameter("prix")+" "+request.getParameter("taille")
+		+" "+request.getParameter("idPizza")+" "+request.getParameter("photo"));
+	}
+}

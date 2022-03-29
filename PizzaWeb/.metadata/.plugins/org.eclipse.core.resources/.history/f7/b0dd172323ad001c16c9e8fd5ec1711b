@@ -1,0 +1,30 @@
+package com.pizza.model;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+public class ListeDesPizzas {
+	private ArrayList <Pizza> pizzas;
+	
+	public ListeDesPizzas (Connection connexion) throws SQLException {
+		pizzas = new ArrayList<>();
+		Statement statement = connexion.createStatement();
+		//Dans ce requête on recupère toutes nos pizzas
+		String pizzasAvecIngredients = "SELECT DISTINCT * from Pizza";
+		ResultSet resultat = statement.executeQuery(pizzasAvecIngredients);
+		
+		while (resultat.next()) {
+			Pizza pizza = new Pizza ();
+			pizza.setIdPizza(Integer.parseInt(resultat.getString("IDPizza")));
+			pizza.setNom(resultat.getString("Nom"));
+			pizza.setPhoto(resultat.getString("Photo"));
+			pizza.setTaille(resultat.getString("Taille"));
+			pizza.setPrix(Float.parseFloat(resultat.getString("Prix")));
+			pizza.setQteStock(Integer.parseInt(resultat.getString("QteStock")));
+			System.out.println(pizza.getIdPizza()+" "+pizza.getNom()+" "+pizza.getPrix()+" $ "+pizza.getPhoto()+" "+pizza.getTaille()+" "+pizza.getQteStock());
+		}
+	}
+}

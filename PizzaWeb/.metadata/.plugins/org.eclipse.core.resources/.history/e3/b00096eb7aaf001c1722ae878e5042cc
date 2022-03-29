@@ -1,0 +1,12 @@
+package com.pizza.model;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+public class Deconnexion {
+
+	public Deconnexion(HttpServletRequest request, HttpServletResponse response) {
+		
+	}
+	
+}

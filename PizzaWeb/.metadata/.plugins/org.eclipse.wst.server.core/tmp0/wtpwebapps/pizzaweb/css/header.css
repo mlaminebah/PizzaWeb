@@ -29,3 +29,6 @@ header {
 .erreur {
 	color: red;
 }
+.success {
+	color: green;
+}

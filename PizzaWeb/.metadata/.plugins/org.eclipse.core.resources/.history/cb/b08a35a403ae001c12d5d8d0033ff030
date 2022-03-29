@@ -1,0 +1,26 @@
+main {
+    display: flex;
+    gap: 20px;
+    flex-direction: row;
+    margin-top: 10px;
+}
+section {
+    width: 1000px;
+    height: auto;
+    border-bottom: 0px solid rgb(243, 207, 207); 
+}
+aside {
+    width:470px;
+    height: 450px;
+    border: 1px solid rgb(243, 207, 207);
+}
+
+.select {
+    display: grid;
+    grid-template-columns: 1fr;
+    border-bottom: 1px solid rgb(243, 207, 207);
+}
+
+.monPan {
+	align : center;
+}

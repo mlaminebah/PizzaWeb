@@ -7,6 +7,7 @@
 		<meta charset="UTF-8">
 		<title>Welcome</title>
 		<link href="css/header.css" rel="stylesheet" type="text/css"/>
+		<link href="css/index.css" rel="stylesheet" type="text/css"/>
 		<link href="css/basket.css" rel="stylesheet"/>
         <link href="css/dropdown.css" rel="stylesheet"/>
         <link href="css/header.css" rel="stylesheet"/>
@@ -21,8 +22,17 @@
 			         <a><img class="logo" id="logo" src="images/logo.jpg"/></a>
 			    </nav>
 			    <nav class="header-right">
-			    	 
-			         <a href="#"><img class="profile" id="profile" src="images/user.png"/></a>
-			         <span class="nom"><c:if test="${!empty sessionScope.prenom}"><c:out value="${sessionScope.prenom}"></c:out></c:if></span>
+			    	 <c:if test="${!empty sessionScope.idClient}">
+			    	 	<a href="<c:url value = "/Sedeconnecter"/>"><img class="profile" id="profile" src="images/se-deconnecter.png"/></a>
+			         	<a href="#"><img class="profile" id="profile" src="images/user.png"/></a>
+			         	<span class="nom"><c:out value="${sessionScope.prenom}"></c:out></span>
+			         </c:if>
 			    </nav>
 		</header>
+		
+		
+		
+		
+		
+		
+		

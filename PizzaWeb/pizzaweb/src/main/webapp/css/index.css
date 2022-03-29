@@ -1,4 +1,89 @@
 @charset "UTF-8";
-h1 {
-	color:red;
+
+#main-slider{ 
+    margin-top:5px;
+    background: white repeat-x 0 0; 
+     height: 385px; 
+     overflow: hidden; 
+     margin-left:13%;
+     width: 1000 px;
+}
+    
+.banner_picture{
+    width: 1000 px;
+}
+
+nav h1{
+    color : white;
+}
+section h1{
+    margin-left: 40%;
+}
+/* Corps */
+
+#choice_of_place_buttons{
+    width: 80%;
+    margin-bottom: 20%;
+    height: 40px;
+}
+
+#choice_of_place{
+   margin-top: 40%;
+   margin-left: 20%;
+}
+
+aside{
+    background-color:rgb(66, 64, 64);
+    border-radius: 5px;
+}
+
+
+/* Footer */
+
+footer
+{
+    background-color:rgb(66, 64, 64);
+    box-shadow: 0px 2px 5px #1c1a19;
+    border-radius: 5px;
+    padding: 10px;
+    color: white;
+    font-size: 0.9em;
+    display: flex;
+}
+
+footer p
+{
+    font-size: 1em;
+}
+
+footer h1
+{
+    font-size: 1.1em;
+    padding-bottom: 40px;
+}
+
+
+#tweet
+{
+    width: 28%;
+}
+
+#suivez_nous
+{
+    margin: auto;
+}
+
+#contact
+{
+   margin: auto;
+}
+
+#instagram_icon{
+    width: 42px;
+    height: 42px;
+}
+.choix {
+	text-decoration: none;
+	font-size : 20px;
+	color : black;
 }

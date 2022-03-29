@@ -45,7 +45,7 @@ public class InscriptionForm {
 		String mpc = request.getParameter("mpc");
 		
 		//on garde les infos en session
-		new Sessions (request,client.getNom(),client.getPrenom(),client.getPhone(),client.getEmail(),client.getAdresse(),client.getMotdePass(),mpc);
+		new Sessions (request,client.getId(),client.getNom(),client.getPrenom(),client.getPhone(),client.getEmail(),client.getAdresse(),client.getMotdePass(),mpc);
 		
 		//on vérifie que les champs répondent aux critères
 		if (client.getNom ().length() < 3 || client.getPrenom().length() < 3) {
@@ -71,7 +71,7 @@ public class InscriptionForm {
 			return false;
 		}
 		//si le client n'existe pas on l'insère donc dans la base de données
-		ajouterClient (client);
+		ajouterClient (client,request);
 		return true;
 	}
 	
@@ -103,7 +103,7 @@ public class InscriptionForm {
 		
 	}
 	//cette fonction ajoute un client dans la base de données
-	public void ajouterClient (Client client) throws SQLException, NoSuchAlgorithmException {
+	public void ajouterClient (Client client,HttpServletRequest request) throws SQLException, NoSuchAlgorithmException {
 		//Ajout dans la table personne
 		String requeteAjouterPesonne = "INSERT INTO Personne (Nom,Prenom,Email,Adresse,Phone) VALUES (?,?,?,?,?);";
 		PreparedStatement statementPersonne =  connexion.prepareStatement(requeteAjouterPesonne);
@@ -139,6 +139,13 @@ public class InscriptionForm {
 		statementClient.setString(2, ut.getStr());
 		statementClient.executeUpdate();
 		System.out.println("Ajout de "+client.toString());
+	
+		
+		//on va au passage transmettre à la vue la liste des pizzas disponibles
+		ListeDesPizzas nosPizzas = new ListeDesPizzas(connexion);
+				//on envoie la liste des pizzas à la vue
+		nosPizzas.affichePizzas();
+		request.setAttribute("pizzas", nosPizzas.getPizzas());
 		
 	}
 }

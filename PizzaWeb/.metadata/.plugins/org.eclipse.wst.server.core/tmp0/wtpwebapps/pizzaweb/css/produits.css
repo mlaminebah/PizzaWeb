@@ -1,7 +1,7 @@
 .produits {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr;
-    gap:25px;
+    gap:35px;
     margin-top: 15px;
 }
 

@@ -11,7 +11,7 @@ section {
 }
 aside {
     width:470px;
-    height: 450px;
+    height: auto;
     border: 1px solid rgb(243, 207, 207);
 }
 
@@ -21,4 +21,28 @@ aside {
     border-bottom: 1px solid rgb(243, 207, 207);
 }
 
-
+.monPan,.tablePan {
+	text-align:center
+}
+.elem {
+	text-align:center;
+}
+.total {
+	text-align:right;
+}
+.ppan {
+	heigth:50px;
+	width:50px;
+}
+.sub {
+	color:orange;
+	font-size: 30px;
+	font-family:bold;
+	text-decoration: none;
+}
+.sup {
+	color:red;
+	font-size: 20px;
+	font-family:bold;
+	text-decoration: none;
+}

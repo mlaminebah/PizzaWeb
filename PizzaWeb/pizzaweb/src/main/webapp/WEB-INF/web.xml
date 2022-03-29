@@ -37,4 +37,30 @@
     <url-pattern>/Seconnecter</url-pattern>
   </servlet-mapping>
   
+  <servlet>
+    <servlet-name>AjouterauPanier</servlet-name>
+    <servlet-class>com.pizza.servlets.AjouterauPanier</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>AjouterauPanier</servlet-name>
+    <url-pattern>/AjouterauPanier</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>ValiderLaCommande</servlet-name>
+    <servlet-class>com.pizza.servlets.ValiderLaCommande</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>ValiderLaCommande</servlet-name>
+    <url-pattern>/ValiderLaCommande</url-pattern>
+  </servlet-mapping>
+  
+  <servlet>
+    <servlet-name>Sedeconnecter</servlet-name>
+    <servlet-class>com.pizza.servlets.Sedeconnecter</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>Sedeconnecter</servlet-name>
+    <url-pattern>/Sedeconnecter</url-pattern>
+  </servlet-mapping>
 </web-app>

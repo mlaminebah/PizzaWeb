@@ -1,0 +1,70 @@
+package com.pizza.model;
+
+public class PizzaPanier {
+	private int idPizza;
+	private String nom;
+	private float prix;
+	private String photo;
+	private String taille;
+	private int  qte = 0;
+	private float  prixTotal;
+	
+	public PizzaPanier(int idPizza, String nom, float prix, String photo, String taille) {
+		super();
+		this.idPizza = idPizza;
+		this.nom = nom;
+		this.prix = prix;
+		this.photo = photo;
+		this.taille = taille;
+		
+	}
+	
+	public void calcul () {
+		qte ++;
+		prixTotal = qte*prix;
+	}
+	public int getQte() {
+		return qte;
+	}
+	
+	public int getIdPizza() {
+		return idPizza;
+	}
+
+	public void setIdPizza(int idPizza) {
+		this.idPizza = idPizza;
+	}
+
+	public String getNom() {
+		return nom;
+	}
+
+	public void setNom(String nom) {
+		this.nom = nom;
+	}
+
+	public float getPrix() {
+		return prix;
+	}
+
+	public void setPrix(float prix) {
+		this.prix = prix;
+	}
+
+	public String getPhoto() {
+		return photo;
+	}
+
+	public void setPhoto(String photo) {
+		this.photo = photo;
+	}
+
+	public String getTaille() {
+		return taille;
+	}
+
+	public void setTaille(String taille) {
+		this.taille = taille;
+	}
+
+}

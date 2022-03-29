@@ -1,0 +1,42 @@
+package com.pizza.model;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+import java.util.HashMap;
+import java.util.stream.Collectors;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+public class ValideEtVideLePanier {
+	private Connection connexion;
+	
+	public ValideEtVideLePanier (HttpServletRequest request) throws SQLException, ClassNotFoundException {
+		HttpSession session = request.getSession();
+		System.out.println("le client "+session.getAttribute("email") +" valide  son panier");
+		Panier panier = Panier.getInstance();
+		//panier.affiche ();
+		System.out.println("*************affiche son panier**************");
+		
+		ChargerDatatBase ();
+		ListeDesPizzas nosPizzas = new ListeDesPizzas(connexion);
+		nosPizzas.affichePizzas();
+		request.setAttribute("pizzas", nosPizzas.getPizzas());
+		
+		//enregistré la commande la base de donnée et renvoyé un message de reussite au client
+		//on envoie la liste des pizzas à la vue
+		//on supprime la variable de session du panier et la hashmap du panier également
+		//int idClient = Integer.parseInt((String) request.getSession().getAttribute("idClient"));
+		int idClient =(int) request.getSession().getAttribute("idClient");
+		System.out.println("La session "+(int)request.getSession().getAttribute("idClient"));
+		request.getSession().removeAttribute("panier");
+		panier.videPanier();
+	}
+	//Cette fonction fait appel à notre singleton qui charge la dataBase
+	private void ChargerDatatBase () throws ClassNotFoundException, SQLException {
+		connexion = ConnexionBDChargeDriver.getInstance().getConnexion();
+	}
+	
+	
+
+}

@@ -1,0 +1,55 @@
+package com.pizza.model;
+
+import java.sql.Connection;
+import java.sql.PreparedStatement;
+import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+public class ValideEtVideLePanier {
+	private Connection connexion;
+	
+	public ValideEtVideLePanier (HttpServletRequest request) throws SQLException, ClassNotFoundException {
+		HttpSession session = request.getSession();
+		System.out.println("le client "+session.getAttribute("email") +" valide  son panier");
+		Panier panier = Panier.getInstance();
+		//panier.affiche ();
+		System.out.println("*************affiche son panier**************");
+		
+		ChargerDatatBase ();
+		ListeDesPizzas nosPizzas = new ListeDesPizzas(connexion);
+		nosPizzas.affichePizzas();
+		request.setAttribute("pizzas", nosPizzas.getPizzas());
+		
+		int idClient =(int) request.getSession().getAttribute("idClient");
+		//enregistré la commande la base de donnée et renvoyé un message de reussite au client
+		//on envoie la liste des pizzas à la vue
+		//on supprime la variable de session du panier et la hashmap du panier également
+		//int idClient = Integer.parseInt((String) request.getSession().getAttribute("idClient"));
+		LocalDateTime myDateObj = LocalDateTime.now();
+		DateTimeFormatter myFormatObj = DateTimeFormatter.ofPattern("dd-MM-yyyy HH:mm:ss");
+	    String formattedDate = myDateObj.format(myFormatObj);
+		String requInserToCommandes = "INSERT INTO Commandes (IdClient,QteCom,Total,DateCommande) VALUES (?,?,?,?)";
+		PreparedStatement statementPersonne =  connexion.prepareStatement(requInserToCommandes);
+		statementPersonne.setInt(1, idClient);
+		statementPersonne.setInt(2, panier.getPanier().size());
+		statementPersonne.setFloat(3, panier.totalCommande());
+		statementPersonne.setString(4,formattedDate);
+		statementPersonne.executeUpdate();
+		//on insère aussi pour chaque commande passé par un client la liste des pizzas commandées
+		
+		//System.out.println("La session "+idClient);
+		request.getSession().removeAttribute("panier");
+		panier.videPanier();
+	}
+	//Cette fonction fait appel à notre singleton qui charge la dataBase
+	private void ChargerDatatBase () throws ClassNotFoundException, SQLException {
+		connexion = ConnexionBDChargeDriver.getInstance().getConnexion();
+	}
+	
+	
+
+}

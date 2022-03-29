@@ -1,0 +1,20 @@
+package com.pizza.model;
+
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
+
+public class ListeDesPizzas {
+	private ArrayList <Pizza> pizzas;
+	
+	public ListeDesPizzas (Connection connexion) throws SQLException {
+		pizzas = new ArrayList<>();
+		Statement statement = connexion.createStatement();
+		//Dans ce requête on recupère toutes nos pizzas en stocks avec les informations de leurs ingrédients
+		String pizzasAvecIngredients = "SELECT DISTINCT * from Pizza P JOIN Composition C ON (C.IDPizza = P.IDPizza) \n"
+									  + "	JOIN Ingredients I ON (I.IDIngreds = C.IDIngreds);";
+		ResultSet resultat = statement
+	}
+}

@@ -1,0 +1,21 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ include file="header.jsp" %>
+	<main>
+            <section class="main">
+                    <%@ include file="categorie.jsp" %>
+                    <%@ include file="produits.jsp" %>
+            </section>
+            
+            <aside>
+            	<form>
+            		<table class="tablePan">
+            			
+            		</table>
+            	</form>
+            </aside>
+            
+        </main>
+	</body>
+</html>

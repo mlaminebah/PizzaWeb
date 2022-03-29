@@ -1,6 +1,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ include file="header.jsp" %>
-		<p><c:out value="bonjour !"></c:out></p>
+		<%@ include file="header.jsp" %>
+		<%@ include file="banniere.jsp" %>
+		<%@ include file="main.jsp" %>
+		<%@ include file="footer.jsp" %>
 	</body>
 </html>

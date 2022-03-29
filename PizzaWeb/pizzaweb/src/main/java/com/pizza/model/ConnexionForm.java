@@ -58,6 +58,7 @@ public class ConnexionForm {
 			client.setPrenom(resultset.getString("Prenom"));
 			client.setAdresse(resultset.getString ("Adresse"));
 			client.setPhone(resultset.getString ("Phone"));
+			client.setEmail(resultset.getString("Email"));
 			client.setMotdePass(resultset.getString ("MotDePasse"));
 			if (mail.equals(resultset.getString("Email"))) mailTrouve = true;
 		}
@@ -68,8 +69,14 @@ public class ConnexionForm {
 			return false;
 		}
 		
-		System.out.println(client.getId()+" "+client.getNom()+" "+client.getPrenom()+" "+client.getAdresse()+" "+client.getPhone());
-		new Sessions(request, client.getNom(), client.getPrenom(),client.getAdresse(),client.getPhone());
+		System.out.println(client.toString());
+		new Sessions(request,client.getId(),client.getNom(), client.getPrenom(),client.getAdresse(),client.getPhone());
+		//on va au passage transmettre à la vue la liste des pizzas disponibles
+		ListeDesPizzas nosPizzas = new ListeDesPizzas(connexion);
+		//on envoie la liste des pizzas à la vue
+		nosPizzas.affichePizzas();
+		request.setAttribute("pizzas", nosPizzas.getPizzas());
+		
 		return true;
 	}
 

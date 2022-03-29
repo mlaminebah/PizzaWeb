@@ -12,6 +12,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.pizza.model.ConnexionForm;
+import com.pizza.model.ListeDesPizzas;
+import com.pizza.model.NosPizzas;
 
 /**
  * Servlet implementation class Seconnecter
@@ -32,7 +34,24 @@ public class Seconnecter extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		request.getRequestDispatcher("/seconnecter.jsp").forward(request, response);
+		if (request.getSession().getAttribute("idClient") == null)
+			request.getRequestDispatcher("/seconnecter.jsp").forward(request, response);
+		else {
+			//on va au passage transmettre à la vue la liste des pizzas disponibles
+			ListeDesPizzas nosPizzas;
+			
+			try {
+				nosPizzas = new NosPizzas().getListeDesPizzas();
+				//on envoie la liste des pizzas à la vue
+				request.setAttribute("pizzas", nosPizzas.getPizzas());
+				request.getRequestDispatcher("/commander.jsp").forward(request, response);
+				
+			} catch (ClassNotFoundException | SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+			
+		}
 	}
 
 	/**
@@ -49,6 +68,7 @@ public class Seconnecter extends HttpServlet {
 					this.getServletContext().getRequestDispatcher("/seconnecter.jsp").forward(request, response);//renvoie d'une reponse d'erreur à la vue
 				} else {
 					//on rededirige vers la page lui permettant de commander 
+					
 					this.getServletContext().getRequestDispatcher("/commander.jsp").forward(request, response);
 				}
 			} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {

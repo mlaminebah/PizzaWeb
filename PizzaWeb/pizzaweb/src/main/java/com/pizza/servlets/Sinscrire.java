@@ -40,7 +40,7 @@ public class Sinscrire extends HttpServlet {
 					this.getServletContext().getRequestDispatcher("/sinscrire.jsp").forward(request, response);//renvoie d'une reponse d'erreur à la vue
 			} else {
 					//on rededirige vers la page lui permettant de commander 
-					this.getServletContext().getRequestDispatcher("/commander.jsp").forward(request, response);				
+					this.getServletContext().getRequestDispatcher("/seconnecter.jsp").forward(request, response);				
 			}
 		} catch (ClassNotFoundException | SQLException | ServletException | IOException e) {
 			// TODO Auto-generated catch block

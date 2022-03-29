@@ -1,0 +1,13 @@
+package com.pizza.model;
+
+import java.sql.Connection;
+import java.util.ArrayList;
+
+public class ListeDesPizzas {
+	private ArrayList <Pizza> pizzas;
+	
+	public ListeDesPizzas (Connection connexion) {
+		pizzas = new ArrayList<>();
+		
+	}
+}

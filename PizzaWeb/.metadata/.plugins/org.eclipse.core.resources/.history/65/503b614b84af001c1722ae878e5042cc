@@ -1,0 +1,116 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ include file="header.jsp" %>
+		<div id="main-slider">
+        
+                <ul>
+                    <li>
+                        <img class="banner_picture" src="images/24.jpg" />
+                    </li>
+                    <li>
+                        <img class="banner_picture" src="images/24.jpg" />
+                    </li>
+                </ul>
+          
+        </div>
+        <div id="main-slider">
+        
+                <ul>
+                    <li>
+                        <img class="banner_picture" src="images/24.jpg" />
+                    </li>
+                    <li>
+                        <img class="banner_picture" src="images/24.jpg" />
+                    </li>
+                </ul>
+          
+        </div>
+
+        <main> 
+            <section class="main">  
+                    <h1>Nos meilleurs ventes</h1>
+                    <div class="produits">
+                        <div class="product">
+                            <article class="survolPizza">
+                                <img src="images/8.jpg"/>
+                                <article class="overlay">
+                                    <article class="text">Description de la pizza</article>
+                                </article>
+                                <table>
+                                    <tr><td><article class="prix">Prix : 7 € </article></td>
+                                    </tr>
+                                </table>
+                            </article> 
+                        </div>
+                        <div class="product">
+                            <article class="survolPizza">
+                                <img src="images/2.jpg"/>
+                                <article class="overlay">
+                                    <article class="text">Description de la pizza</article>
+                                </article>
+                                <table>
+                                    <tr><td><article class="prix">Prix : 10 € </article></td>
+                                    </tr>
+                                </table>
+                            </article> 
+                        </div>
+                        <div class="product">
+                            <article class="survolPizza">
+                                <img src="images/4.jpg"/>
+                                <article class="overlay">
+                                    <article class="text">Description de la pizza</article>
+                                </article>
+                                <table>
+                                    <tr><td><article class="prix">Prix : 12 € </article></td>
+                                        
+                                    </tr>
+                                </table>
+                            </article> 
+                        </div>
+                        <div class="product">
+                            <article class="survolPizza">
+                                <img src="images/4.jpg"/>
+                                <article class="overlay">
+                                    <article class="text">Description de la pizza</article>
+                                </article>
+                                <table>
+                                    <tr><td><article class="prix">Prix : 8 € </article></td>
+                                        
+                                    </tr>
+                                </table>
+                            </article> 
+                        </div>
+                        <div class="product">
+                            <article class="survolPizza">
+                                <img src="images/5.jpg"/>
+                                <article class="overlay">
+                                    <article class="text">Description de la pizza</article>
+                                </article>
+                                <table>
+                                    <tr><td><article class="prix">Prix : 9 € </article></td>
+                                        
+                                    </tr>
+                                </table>
+                            </article> 
+                        </div>
+                        <div class="product">
+                            <article class="survolPizza">
+                                <img src="images/8.jpg"/>
+                                <article class="overlay">
+                                    <article class="text">Description de la pizza</article>
+                                </article>
+                                <table>
+                                    <tr><td><article class="prix">Prix : 11 € </article></td>
+                                        
+                                    </tr>
+                                </table>
+                            </article> 
+                        </div> 
+                        </div>
+                                              
+                    </div>
+                   
+            </section>
+        </main>
+	</body>
+</html>

@@ -86,17 +86,28 @@ select *from Composition;
 
 -- --Table Commandes
 create TABLE IF NOT EXISTS Commandes (
-	IdCom int not null,
+	IdCom int AUTO_INCREMENT NOT NULL,
 	IdClient int not null,
-	IDPizza int not null,
-	DateCommande datetime,
+	DateCommande varchar(50),
 	QteCom int not null,
-	primary key (IdCom,IdClient),
-	FOREIGN KEY (IDClient) REFERENCES Client(IDClient),
-	FOREIGN KEY (IDPizza)  REFERENCES Pizza (IDPizza)
+	Total float null,
+	primary key (IdCom),
+	FOREIGN KEY (IDClient) REFERENCES Client(IDClient)
+);
+-- --Table LigneCommande
+create TABLE IF NOT EXISTS LigneCommande (
+	IDPizza int not null,
+	IdCom int not null,
+	QtePizz int not null,
+	Prix float not null,
+	primary key (IdCom,IDPizza),
+	foreign key (IDPizza) REFERENCES Pizza(IDPizza),
+	foreign key (IdCom) REFERENCES Commandes (IdCom)	
 );
 
--- Insertion des données
+-- Pour chaque pizza on affiche ses informations (ingrédients,.....)
+SELECT DISTINCT I.Nom from Pizza P JOIN Composition C ON (C.IDPizza = P.IDPizza) 
+	JOIN Ingredients I ON (I.IDIngreds = C.IDIngreds)  WHERE P.IDPizza = 1;
 
 show tables;
 

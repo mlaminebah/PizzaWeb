@@ -1,0 +1,10 @@
+package com.pizza.model;
+
+public class PizzaPanier {
+	private int idPizza;
+	private String nom;
+	private float prix;
+	private String photo;
+	private String taille;
+	
+}

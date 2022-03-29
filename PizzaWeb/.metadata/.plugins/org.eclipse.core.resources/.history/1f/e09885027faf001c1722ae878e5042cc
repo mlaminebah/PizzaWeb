@@ -1,0 +1,16 @@
+package com.pizza.model;
+
+import java.sql.Connection;
+import java.sql.SQLException;
+
+public class NosPizzas {
+	private Connection connexion;
+	
+	public NosPizzas () throws SQLException, ClassNotFoundException {
+		ChargerDatatBase ();
+		ListeDesPizzas nosPizzas = new ListeDesPizzas(connexion);
+	}
+	private void ChargerDatatBase () throws ClassNotFoundException, SQLException {
+		connexion = ConnexionBDChargeDriver.getInstance().getConnexion();
+	}
+}
