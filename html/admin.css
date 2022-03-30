@@ -1,11 +1,13 @@
 
+
 #menu{
 	position:absolute;
     margin-left:30%;
 }
 dl{
     text-decoration:none;
-	height:10px;
+	
+	width: 500px;
 	padding:0;
     margin-top:55px;
 	display:block;
@@ -22,7 +24,7 @@ dl{
     font-family:blackadder itc normal;
 }
 dt:hover{
-    background:rgb(174,249,99);	
+    background:red;	
     border-color:white;
     color:black;
     border-radius:20px 20px 20px;
@@ -36,7 +38,7 @@ dt:hover{
 dt{
 	font-family:blackadder itc normal;
 	font-size:15px;
-	width:140px;
+	width:490px;
 	display:block;
 	height:30px;
 	color:white;
@@ -48,7 +50,7 @@ dt{
     border-left:ridge 3px white;
 	cursor:pointer;
     border-radius:17px 17px 17px;
-    background:rgb(66, 64, 64);;
+    background:rgb(66, 64, 64);
 }
 dd{
 	margin:0;
